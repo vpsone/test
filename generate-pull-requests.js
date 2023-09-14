@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 import fetch from 'node-fetch';
 const token = process.env.GH_TOKEN;
 const url = 'https://api.github.com/graphql';
