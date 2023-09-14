@@ -28,9 +28,7 @@ jobs:
 
       - name: Update README
         run: |
-          cat README.md | \
-            sed -e '/<!-- START recent-pull-requests -->/,/<!-- END recent-pull-requests -->/c<!-- START recent-pull-requests -->\n'"$(cat pull-requests.md)"'\n<!-- END recent-pull-requests -->' \
-            > README.md
+          sed -e '/<!-- START recent-pull-requests -->/,/<!-- END recent-pull-requests -->/c<!-- START recent-pull-requests -->\n'"$(cat pull-requests.md)"'\n<!-- END recent-pull-requests -->' > README.md
           rm pull-requests.md
         if: success()
 
