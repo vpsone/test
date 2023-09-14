@@ -1,5 +1,4 @@
 name: Update Pull Requests
-ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
 
 on:
   push:
@@ -10,6 +9,9 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
 
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true  # Allow unsecure Node.js versions
+
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -17,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16  # Updated to Node.js 16
+          node-version: 12  # Use Node.js 12 for this step (unsecure version)
 
       - name: Install dependencies
         run: npm install
