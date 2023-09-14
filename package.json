@@ -1,6 +1,7 @@
 {
   "name": "github-actions-pull-requests",
   "version": "1.0.0",
+  "type":"module"
   "description": "GitHub Actions workflow for updating pull requests in README",
   "main": "generate-pull-requests.js",
   "scripts": {
