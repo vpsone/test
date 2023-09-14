@@ -14,8 +14,8 @@ async function fetchPullRequests() {
       data: {
         query: `
           {
-            viewer {
-              pullRequests(last: 5) {
+            viewer{
+              pullRequests(last: 5){
                 nodes {
                   title
                   url
