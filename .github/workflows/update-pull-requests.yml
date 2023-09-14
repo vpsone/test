@@ -9,17 +9,14 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
 
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true  # Allow unsecure Node.js versions
-
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 12  # Use Node.js 12 for this step (unsecure version)
+          node-version: 16  # Updated to Node.js 16
 
       - name: Install dependencies
         run: npm install
