@@ -1,0 +1,44 @@
+name: Update Pull Requests
+
+on:
+  push:
+    branches:
+      - main  # Change this to your default branch name if different
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Pull Request List
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: node generate-pull-requests.js  # Replace with your script or command
+
+      - name: Update README
+        run: |
+          cat README.md | \
+            sed -e '/<!-- START recent-pull-requests -->/,/<!-- END recent-pull-requests -->/c<!-- START recent-pull-requests -->\n'"$(cat pull-requests.md)"'\n<!-- END recent-pull-requests -->' \
+            > README.md
+          rm pull-requests.md
+        if: success()
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update recent pull requests"
+          git push
+        if: success()
