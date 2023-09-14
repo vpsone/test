@@ -7,11 +7,7 @@
     "start": "node generate-pull-requests.js"
   },
   "dependencies": {
-    "axios": "^1.5.0"  // You can add other dependencies here if needed
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/your-repo.git"  // Replace with your repository URL
+    "axios": "^1.5.0"
   },
   "author": "Your Name",
   "license": "MIT"
